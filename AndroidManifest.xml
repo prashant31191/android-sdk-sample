@@ -29,7 +29,7 @@
         <activity android:name="BannerAdFromCodeActivity" />
         <activity android:name="FullscreenAdActivity" />
         <activity
-            android:name="de.madvertise.android.sdk.AdActivity"
+            android:name="com.liquidm.sdk.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
     </application>
 
