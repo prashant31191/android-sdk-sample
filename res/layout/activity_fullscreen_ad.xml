@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:madvertise="http://schemas.android.com/apk/lib/de.madvertise.android.sdk"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -8,21 +9,19 @@
     tools:context=".MainActivity" >
 
     <Button
+        android:id="@+id/button1"
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onShowBannerAdXMLClick"
-        android:text="Show banner ad (XML)" />
+        android:onClick="onLoadClick"
+        android:text="Load" />
 
     <Button
+        android:id="@+id/button2"
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onShowBannerAdCodeClick"
-        android:text="Show banner ad (code)" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onShowFullscreenAdClick"
-        android:text="Show fullscreen ad" />
+        android:onClick="onShowClick"
+        android:text="Show" />
 
 </LinearLayout>
