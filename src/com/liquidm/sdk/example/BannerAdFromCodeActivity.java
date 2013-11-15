@@ -11,6 +11,9 @@ import com.liquidm.sdk.AdView;
 
 public class BannerAdFromCodeActivity extends Activity {
 
+	// Enter your site token here
+	private static final String SITE_TOKEN = null;
+
 	AdView adView;
 
 	@Override
@@ -18,7 +21,7 @@ public class BannerAdFromCodeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_banner_ad_from_code);
 
-		adView = new AdView(this, "TestTokn", AdSize.MMA);
+		adView = new AdView(this, SITE_TOKEN, AdSize.MMA);
 
 		adView.setAutoreload(true);
 

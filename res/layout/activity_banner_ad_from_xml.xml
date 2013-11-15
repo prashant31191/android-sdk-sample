@@ -5,12 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
+    <!-- Enter your site token below -->
     <de.madvertise.android.sdk.AdView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
         madvertise:adSize="mma"
         madvertise:autoreload="true"
-        madvertise:siteToken="TestTokn" />
+        madvertise:siteToken="" />
 
 </FrameLayout>

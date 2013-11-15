@@ -8,6 +8,9 @@ import com.liquidm.sdk.InterstitialAd;
 
 public class FullscreenAdActivity extends Activity {
 
+	// Enter your site token here
+	private static final String SITE_TOKEN = null;
+
 	InterstitialAd interstitial;
 
 	@Override
@@ -15,7 +18,7 @@ public class FullscreenAdActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fullscreen_ad);
 
-		interstitial = new InterstitialAd(this, "TestTokn");
+		interstitial = new InterstitialAd(this, SITE_TOKEN);
 	}
 
 	public void onLoadClick(View view) {
