@@ -6,7 +6,7 @@
     tools:context=".MainActivity" >
 
     <!-- Enter your site token below -->
-    <de.madvertise.android.sdk.AdView
+    <com.liquidm.sdk.AdView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
