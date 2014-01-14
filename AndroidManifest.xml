@@ -29,6 +29,12 @@
         <activity android:name="BannerAdFromCodeActivity" />
         <activity android:name="FullscreenAdActivity" />
         <activity
+            android:name="VideoAdFromXmlActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
+        <activity
+            android:name="VideoAdFromCodeActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
+        <activity
             android:name="com.liquidm.sdk.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
     </application>

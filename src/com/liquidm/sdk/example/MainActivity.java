@@ -28,4 +28,14 @@ public class MainActivity extends Activity {
 		startActivity(i);
 	}
 
+	public void onShowVideoAdXMLClick(View view) {
+		Intent i = new Intent(this, VideoAdFromXmlActivity.class);
+		startActivity(i);
+	}
+
+	public void onShowVideoAdCodeClick(View view) {
+		Intent i = new Intent(this, VideoAdFromCodeActivity.class);
+		startActivity(i);
+	}
+
 }

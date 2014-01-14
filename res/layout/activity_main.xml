@@ -25,4 +25,16 @@
         android:onClick="onShowFullscreenAdClick"
         android:text="Show fullscreen ad" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onShowVideoAdXMLClick"
+        android:text="Show video ad (XML)" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onShowVideoAdCodeClick"
+        android:text="Show video ad (code)" />
+
 </LinearLayout>
