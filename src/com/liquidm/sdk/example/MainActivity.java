@@ -1,9 +1,14 @@
 package com.liquidm.sdk.example;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+
+import com.liquidm.sdk.Version;
 
 public class MainActivity extends Activity {
 
@@ -11,6 +16,34 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.menu_about:
+			onAboutButtonClick(null);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	public void onAboutButtonClick(View view) {
+		String message = "LiquidM SDK version:\n" + Version.FULL_NAME;
+
+		AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+		dialogBuilder.setTitle(R.string.app_name);
+		dialogBuilder.setMessage(message);
+		dialogBuilder.setPositiveButton(android.R.string.ok, null);
+		AlertDialog dialog = dialogBuilder.create();
+		dialog.show();
 	}
 
 	public void onShowBannerAdXMLClick(View view) {
