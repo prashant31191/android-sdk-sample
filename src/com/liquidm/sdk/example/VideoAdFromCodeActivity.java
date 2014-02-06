@@ -16,8 +16,8 @@ import com.liquidm.sdk.example.VideoAdViewFullscreenModeProvider.Listener;
 public class VideoAdFromCodeActivity extends Activity implements Listener {
 
 	// Enter your site token and video path here
-	private static final String SITE_TOKEN = "kmpWXOfu";
-	private static final String VIDEO_PATH = "http://mirrorblender.top-ix.org/movies/sintel-1024-surround.mp4";
+	private static final String SITE_TOKEN = "";
+	private static final String VIDEO_PATH = "";
 
 	private VideoAdView videoAdView;
 	private VideoAdViewFullscreenModeProvider videoAdViewFullscreenModeProvider;
