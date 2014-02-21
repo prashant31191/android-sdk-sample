@@ -15,8 +15,14 @@
       android:name="com.liquidm.sdk.AdActivity"
       android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
 
+### Add Google Play Services to your project
+
+1. [Install the Google Play Services SDK](http://developer.android.com/google/play-services/setup.html#Install)
+
+1. [Integrate your project with Google Play Services SDK](http://developer.android.com/google/play-services/setup.html#Setup)
+
 ## Create banner in xml
-### Add liquidm namespace declaration to xml root element 
+### Add liquidm namespace declaration to xml root element
     xmlns:liquidm="http://schemas.android.com/apk/lib/com.liquidm.sdk"
 
 ### Add AdView to your layout.
@@ -83,7 +89,7 @@ See [Video ad fullscreen mode](#video-ad-fullscreen-mode) for fullscreen mode in
 
     int width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, r.getDisplayMetrics());
     int height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, r.getDisplayMetrics());
-    
+
     FrameLayout mainLayout = (FrameLayout) findViewById(R.id.main_layout);
     FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
     mainLayout.addView(videoAdView, params);
@@ -113,14 +119,14 @@ Follow below instructions to implement fullscreen mode the same way as it is imp
         @Override
         public void onWindowFocusChanged(boolean hasFocus) {
             super.onWindowFocusChanged(hasFocus);
-        
+
             videoAdViewFullscreenModeProvider.update();
         }
-        
+
         @Override
         public void onConfigurationChanged(Configuration newConfig) {
             super.onConfigurationChanged(newConfig);
-        
+
             videoAdViewFullscreenModeProvider.update();
         }
 
@@ -139,11 +145,11 @@ Add the following code to Activity.onCreate():
 
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-        
+
             if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
                 requestWindowFeature(Window.FEATURE_NO_TITLE);
             }
-        
+
             setContentView(R.layout.activity_video_ad_from_code);
             // ...
         }
