@@ -1,3 +1,16 @@
+# LiquidM Android SDK
+The LiquidM Android SDK allows you to request and present ads in your app. It includes the newest mobile ad technology and provides the following features:
+
+- Support for banner and interstitial ads
+  - text, image and [MRAID 2.0](http://www.iab.net/media/file/IAB_MRAID_v2_FINAL.pdf) (interactive rich media creatives) ad formats
+  - industry standard banners sizes: mma, medium_rectangle, etc. and custom sized banners
+  - standard and HD image banners
+- Support for video ads (based on [VAST](http://www.iab.net/media/file/VASTv3.0.pdf))
+  - pre-roll and post-roll video ads
+  - landscape-portrait auto adaptation
+- Support for DFP mediation
+  - dedicated adapter for [DFP Network Mediation](https://developers.google.com/mobile-ads-sdk/docs/dfp/mediation) integrated into SDK
+
 ## Project Integration
 ### Copy liquidmsdk.jar into libs/ directory
 ### Set required permissions in AndroidManifest.xml
