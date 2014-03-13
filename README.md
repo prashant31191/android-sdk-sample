@@ -22,6 +22,17 @@ After you cloned this repository or unzipped the archive you'll find the followi
 - [CHANGELOG.md](CHANGELOG.md): Documentation of SDK changes.
 - [README.md](README.md): This documentation.
 
+# Try the example application
+First of all you should try to open our example app which contains the LiquidM Android SDK already integrated. To do so, just import the [example project](Example) into Eclipse, attach the Android device and run it.
+
+![Example App Screenshot](Docs/Image/example-app-1.png "Example App Screenshot")
+![Example App Screenshot](Docs/Image/example-app-2.png "Example App Screenshot")
+
+In the example application you can see how to properly integrate:
+- banner ad (both in code and xml)
+- interstitial ad
+- video ad (both in code and xml)
+
 ## Project Integration
 ### Copy liquidmsdk.jar into libs/ directory
 ### Set required permissions in AndroidManifest.xml
