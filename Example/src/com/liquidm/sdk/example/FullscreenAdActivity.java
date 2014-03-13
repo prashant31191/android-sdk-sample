@@ -9,7 +9,7 @@ import com.liquidm.sdk.InterstitialAd;
 public class FullscreenAdActivity extends Activity {
 
 	// Enter your site token here
-	private static final String SITE_TOKEN = null;
+	private static final String SITE_TOKEN = "TestTokn";
 
 	InterstitialAd interstitial;
 

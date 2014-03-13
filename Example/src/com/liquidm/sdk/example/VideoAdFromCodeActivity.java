@@ -3,12 +3,10 @@ package com.liquidm.sdk.example;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.liquidm.sdk.VideoAdView;
 import com.liquidm.sdk.example.VideoAdViewFullscreenModeProvider.Listener;
@@ -16,7 +14,7 @@ import com.liquidm.sdk.example.VideoAdViewFullscreenModeProvider.Listener;
 public class VideoAdFromCodeActivity extends Activity implements Listener {
 
 	// Enter your site token and video path here
-	private static final String SITE_TOKEN = "";
+	private static final String SITE_TOKEN = "TestTokn";
 	private static final String VIDEO_PATH = "";
 
 	private VideoAdView videoAdView;
@@ -35,6 +33,7 @@ public class VideoAdFromCodeActivity extends Activity implements Listener {
 
 		setContentView(R.layout.activity_video_ad_from_code);
 		LinearLayout mainLayout = (LinearLayout) findViewById(R.id.main_layout);
+		contentView = findViewById(R.id.content_view);
 
 		videoAdView = new VideoAdView(this, SITE_TOKEN, VIDEO_PATH);
 		videoAdView.setFullscreenButtonVisible(true);
@@ -42,22 +41,10 @@ public class VideoAdFromCodeActivity extends Activity implements Listener {
 		videoAdViewFullscreenModeProvider.setListener(this);
 
 		{
-			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-					LayoutParams.MATCH_PARENT);
-			mainLayout.addView(videoAdView, params);
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
+					LayoutParams.WRAP_CONTENT);
+			mainLayout.addView(videoAdView, 0, params);
 		}
-
-		TextView textView = new TextView(this);
-		textView.setText("Content");
-		textView.setGravity(Gravity.CENTER);
-		contentView = textView;
-
-		{
-			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
-					LayoutParams.MATCH_PARENT);
-			mainLayout.addView(contentView, params);
-		}
-
 	}
 
 	@Override
