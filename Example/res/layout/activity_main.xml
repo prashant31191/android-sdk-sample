@@ -8,33 +8,33 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onShowBannerAdXMLClick"
-        android:text="Show banner ad (XML)" />
+        android:text="@string/examples_show_banner_xml" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onShowBannerAdCodeClick"
-        android:text="Show banner ad (code)" />
+        android:text="@string/examples_show_banner_code" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onShowFullscreenAdClick"
-        android:text="Show fullscreen ad" />
+        android:text="@string/examples_show_fullscreen" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onShowVideoAdXMLClick"
-        android:text="Show video ad (XML)" />
+        android:text="@string/examples_show_video_xml" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onShowVideoAdCodeClick"
-        android:text="Show video ad (code)" />
+        android:text="@string/examples_show_video_code" />
 
 </LinearLayout>
