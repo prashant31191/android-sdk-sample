@@ -11,12 +11,12 @@ The LiquidM Android SDK allows you to request and present ads in your app. It in
 - Support for DFP mediation
   - dedicated adapter for [DFP Network Mediation](https://developers.google.com/mobile-ads-sdk/docs/dfp/mediation) integrated into SDK
 
-# Integrate the SDK into your app
+# Repository structure
 This repository contains an example app (LiquidMSDKExample) and provides all the files to integrate the LiquidM Android SDK in your app. We suggest that you clone this repository with git (git clone https://github.com/liquidm/android-sdk-sample.git). If you're not familiar with git you can download the content of this repository as zip archive ([download](https://github.com/liquidm/android-sdk-sample/archive/master.zip)).
 
 After you cloned this repository or unzipped the archive you'll find the following structure:
 
-- [SDK](LiquidMSDK): Actual SDK with [DFP Network Mediation](https://developers.google.com/mobile-ads-sdk/docs/dfp/mediation).
+- [SDK](SDK): Actual SDK with [DFP Network Mediation](https://developers.google.com/mobile-ads-sdk/docs/dfp/mediation) adapter.
 - [Example](Example): Example application.
 - [GooglePlayServices](GooglePlayServices): Google Play Services library needed by example application.
 - [CHANGELOG.md](CHANGELOG.md): Documentation of SDK changes.
