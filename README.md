@@ -63,7 +63,7 @@ In the example application you can see how to properly integrate:
 
   1. [Integrate your project with Google Play Services SDK](http://developer.android.com/google/play-services/setup.html#Setup)
 
-# Usage
+# Use cases
 This section contains some common uses and describes how to integrate different kinds of ads into your applicaiton. For banners and video ads you can choose to integrate them in layout xml files or in application code. Please make sure, that you replace the "TestTokn" with your personal token. The "TestTokn" contains example ads and allows you to test your implementation.
 
 ## Request banner ad in xml
@@ -111,7 +111,7 @@ layout.addView(adView, new FrameLayout.LayoutParams(
   Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL));
 ```
 
-See [example code](Example/src/com/liquidm/sdk/example/BannerAdFromCodeActivity) for more details.
+See [example code](Example/src/com/liquidm/sdk/example/BannerAdFromCodeActivity.java) for more details.
 
 ## Request interstitial ad in code
 1. Create and load InterstitialAd
@@ -147,15 +147,16 @@ Remember to set your siteToken and videoPath.
 
     ```xml
     <!-- Replace TestTokn with your personal token. -->
+    <!-- Enter videoPath to your video file. -->
     <com.liquidm.sdk.VideoAdView
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
         liquidm:videoPath=""
-        liquidm:siteToken="" />
+        liquidm:siteToken="TestTokn" />
     ```
 
-See [example layout](Example/res/layout/activity_video_ad_from_xml.xml) for more details.
+See [example layout](Example/src/com/liquidm/sdk/example/VideoAdFromCodeActivity.java) for more details.
 
 See [Video ad fullscreen mode](#video-ad-fullscreen-mode) for fullscreen mode integration instructions.
 
@@ -175,8 +176,11 @@ FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
 mainLayout.addView(videoAdView, params);
 ```
 
+See [example code](Example/res/layout/activity_video_ad_from_xml.xml) for more details.
+
 See [Video ad fullscreen mode](#video-ad-fullscreen-mode) for fullscreen mode integration instructions.
 
+# Other
 ## Video ad fullscreen mode
 VideoAdView supports fullscreen mode, but part of its implementation have to be done by user.
 
