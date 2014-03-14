@@ -25,43 +25,51 @@ After you cloned this repository or unzipped the archive you'll find the followi
 # Try the example application
 First of all you should try to open our example app which contains the LiquidM Android SDK already integrated. To do so, just import the [example project](Example) into Eclipse, attach the Android device and run it.
 
-![Example App Screenshot](Docs/Image/example-app-1.png "Example App Screenshot")
-![Example App Screenshot](Docs/Image/example-app-2.png "Example App Screenshot")
+![Example App Screenshot](Docs/Images/example-app-1.png "Example App Screenshot") ![Example App Screenshot](Docs/Images/example-app-2.png "Example App Screenshot")
 
 In the example application you can see how to properly integrate:
 - banner ad (both in code and xml)
 - interstitial ad
 - video ad (both in code and xml)
 
-## Project Integration
-### Copy liquidmsdk.jar into libs/ directory
-### Set required permissions in AndroidManifest.xml
+
+
+# Integrate the LiquidM SDK into your application
+## Copy [liquidmsdk.jar](SDK/liquidmsdk.jar) into libs/ directory of your project.
+## Set required permissions in AndroidManifest.xml
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
-### Set optional permissions in AndroidManifest.xml
+## Set optional permissions in AndroidManifest.xml
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
-### Define AdActivity in AndroidManifest.xml
+## Define AdActivity in AndroidManifest.xml
 
     <activity
       android:name="com.liquidm.sdk.AdActivity"
       android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
 
-### Add Google Play Services to your project
+## Add Google Play Services to your project
 
 1. [Install the Google Play Services SDK](http://developer.android.com/google/play-services/setup.html#Install)
 
 1. [Integrate your project with Google Play Services SDK](http://developer.android.com/google/play-services/setup.html#Setup)
 
-## Create banner in xml
+# Integrate desired ad types into your application
+This section contains some common uses and describes how to integrate different kinds of ads into your applicaiton. For banners and video ads you can choose to integrate them in layout xml files or in application code. Please make sure, that you replace the "TestTokn" with your personal token. The "TestTokn" contains example ads and allows you to test your implementation.
+
+## Create banner ad in xml
 ### Add liquidm namespace declaration to xml root element
     xmlns:liquidm="http://schemas.android.com/apk/lib/com.liquidm.sdk"
 
 ### Add AdView to your layout.
 Remember to set your siteToken.
+
+    <!-- Replace TestTokn with your personal token -->
+    <!-- For adSize use one of: mma, medium_rectangle, leaderboard, portrait, landscape, xx_large
+         or provide a custom size, for example: 320x50 -->
 
     <com.liquidm.sdk.AdView
       android:layout_width="wrap_content"
@@ -69,13 +77,20 @@ Remember to set your siteToken.
       android:layout_gravity="center|bottom"
       liquidm:adSize="mma"
       liquidm:autoreload="true"
-      liquidm:siteToken="" />
+      liquidm:siteToken="TestTokn" />
 
-See [example layout](https://github.com/madvertise/android-sdk-sample/blob/master/res/layout/activity_banner_ad_from_xml.xml) for more details.
+See [example layout](Example/res/layout/activity_banner_ad_from_xml.xml) for more details.
 
-## Create banner in code
-    String siteToken = ""; // Enter here your site token.
-    AdView adView = new AdView(this, siteToken, AdSize.MMA);
+## Create banner ad in code
+    // Replace TestTokn with your personal token.
+    String siteToken = "TestTokn";
+
+    // Select desired ad size (MMA, MEDIUM_RECTANGLE, LEADERBOARD, PORTRAIT, LANDSCAPE, XX_LARGE)
+    AdSize adSize = AdSize.MMA;
+    // or request custom sized ad using:
+    // AdSize adSize = new AdSize(320, 50);
+
+    AdView adView = new AdView(this, siteToken, adSize);
 
     adView.setAutoreload(true);
 
@@ -83,10 +98,15 @@ See [example layout](https://github.com/madvertise/android-sdk-sample/blob/maste
       LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT,
       Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL));
 
-## Create interstitial
+See [example code](Example/src/com/liquidm/sdk/example/BannerAdFromCodeActivity) for more details.
+
+## Create interstitial ad in code
 ### Create and load InterstitialAd
-    String siteToken = ""; // Enter here your site token.
+    // Replace TestTokn with your personal token.
+    String siteToken = "TestTokn";
+
     InterstitialAd interstitialAd = new InterstitialAd(this, siteToken);
+
     interstitialAd.loadAd();
 
 
@@ -97,6 +117,7 @@ See [example layout](https://github.com/madvertise/android-sdk-sample/blob/maste
       interstitial.loadAd();
     }
 
+
 ## Create video ad in xml
 ### Add liquidm namespace declaration to xml root element
     xmlns:liquidm="http://schemas.android.com/apk/lib/com.liquidm.sdk"
@@ -104,7 +125,7 @@ See [example layout](https://github.com/madvertise/android-sdk-sample/blob/maste
 ### Add VideoAdView to your layout.
 Remember to set your siteToken and videoPath.
 
-    <!-- Enter your site token and video path below -->
+    <!-- Replace TestTokn with your personal token. -->
     <com.liquidm.sdk.VideoAdView
         android:layout_width="200dp"
         android:layout_height="150dp"
