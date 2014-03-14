@@ -180,6 +180,18 @@ See [example code](Example/res/layout/activity_video_ad_from_xml.xml) for more d
 
 See [Video ad fullscreen mode](#video-ad-fullscreen-mode) for fullscreen mode integration instructions.
 
+# Request banner ad through DFP adapter
+
+1. Integrate LiquidM SDK like described [above](#integrate-the-sdk-into-your-application)
+
+1. Request AdMob banner ad like described [here](https://developers.google.com/mobile-ads-sdk/docs/admob/fundamentals) using AdMob *ad unit id* with configured LiquidM mediation.
+
+# Request interstitial ad through DFP adapter
+
+1. Integrate LiquidM SDK like described [above](#integrate-the-sdk-into-your-application)
+
+1. Request AdMob interstitial ad like described [here](https://developers.google.com/mobile-ads-sdk/docs/admob/advanced) using AdMob *ad unit id* with configured LiquidM mediation.
+
 # Other
 ## Video ad fullscreen mode
 VideoAdView supports fullscreen mode, but part of its implementation have to be done by user.
