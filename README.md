@@ -32,26 +32,30 @@ In the example application you can see how to properly integrate:
 - interstitial ad
 - video ad (both in code and xml)
 
-
-
 # Integrate the SDK into your application
 1. Copy [liquidmsdk.jar](SDK/liquidmsdk.jar) into libs/ directory of your project.
 1. Set required permissions in AndroidManifest.xml
 
-        <uses-permission android:name="android.permission.INTERNET"/>
-        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    ```xml
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    ```
 
 1. Set optional permissions in AndroidManifest.xm
 
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    ```xml
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    ```
 
 1. Define AdActivity in AndroidManifest.xml
 
-        <activity
-          android:name="com.liquidm.sdk.AdActivity"
-          android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
+    ```xml
+    <activity
+      android:name="com.liquidm.sdk.AdActivity"
+      android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
+    ```
 
 1. Add Google Play Services to your project
 
@@ -59,19 +63,22 @@ In the example application you can see how to properly integrate:
 
   1. [Integrate your project with Google Play Services SDK](http://developer.android.com/google/play-services/setup.html#Setup)
 
-# Integrate desired ad types into your application
+# Usage
 This section contains some common uses and describes how to integrate different kinds of ads into your applicaiton. For banners and video ads you can choose to integrate them in layout xml files or in application code. Please make sure, that you replace the "TestTokn" with your personal token. The "TestTokn" contains example ads and allows you to test your implementation.
 
-## Create banner ad in xml
-### Add liquidm namespace declaration to xml root element
+## Request banner ad in xml
+1. Add liquidm namespace declaration to xml root element.
+
+    ```xml
     xmlns:liquidm="http://schemas.android.com/apk/lib/com.liquidm.sdk"
+    ```
 
-### Add AdView to your layout.
-Remember to set your siteToken.
+1. Add AdView to your layout.
 
+    ```xml
     <!-- Replace TestTokn with your personal token -->
     <!-- For adSize use one of: mma, medium_rectangle, leaderboard, portrait, landscape, xx_large
-         or provide a custom size, for example: 320x50 -->
+      or provide a custom size, for example: 320x50 -->
 
     <com.liquidm.sdk.AdView
       android:layout_width="wrap_content"
@@ -80,53 +87,65 @@ Remember to set your siteToken.
       liquidm:adSize="mma"
       liquidm:autoreload="true"
       liquidm:siteToken="TestTokn" />
+    ```
 
 See [example layout](Example/res/layout/activity_banner_ad_from_xml.xml) for more details.
 
-## Create banner ad in code
-    // Replace TestTokn with your personal token.
-    String siteToken = "TestTokn";
+## Request banner ad in code
 
-    // Select desired ad size (MMA, MEDIUM_RECTANGLE, LEADERBOARD, PORTRAIT, LANDSCAPE, XX_LARGE)
-    AdSize adSize = AdSize.MMA;
-    // or request custom sized ad using:
-    // AdSize adSize = new AdSize(320, 50);
+```java
+// Replace TestTokn with your personal token.
+String siteToken = "TestTokn";
 
-    AdView adView = new AdView(this, siteToken, adSize);
+// Select desired ad size (MMA, MEDIUM_RECTANGLE, LEADERBOARD, PORTRAIT, LANDSCAPE, XX_LARGE)
+AdSize adSize = AdSize.MMA;
+// or request custom sized ad using:
+// AdSize adSize = new AdSize(320, 50);
 
-    adView.setAutoreload(true);
+AdView adView = new AdView(this, siteToken, adSize);
 
-    layout.addView(adView, new FrameLayout.LayoutParams(
-      LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT,
-      Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL));
+adView.setAutoreload(true);
+
+layout.addView(adView, new FrameLayout.LayoutParams(
+  LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT,
+  Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL));
+```
 
 See [example code](Example/src/com/liquidm/sdk/example/BannerAdFromCodeActivity) for more details.
 
-## Create interstitial ad in code
-### Create and load InterstitialAd
+## Request interstitial ad in code
+1. Create and load InterstitialAd
+
+    ```java
     // Replace TestTokn with your personal token.
     String siteToken = "TestTokn";
 
     InterstitialAd interstitialAd = new InterstitialAd(this, siteToken);
 
     interstitialAd.loadAd();
+    ```
 
+1. Show interstitial and reload
 
-### Show interstitial and reload
+    ```java
     if (interstitial.isReady()) {
       interstitial.show();
     } else if (!interstitial.isLoading()) {
       interstitial.loadAd();
     }
+    ```
 
+## Request video ad in xml
+1. Add liquidm namespace declaration to xml root element
 
-## Create video ad in xml
-### Add liquidm namespace declaration to xml root element
+    ```xml
     xmlns:liquidm="http://schemas.android.com/apk/lib/com.liquidm.sdk"
+    ```
 
-### Add VideoAdView to your layout.
+1. Add VideoAdView to your layout.
 Remember to set your siteToken and videoPath.
 
+    ```xml
     <!-- Replace TestTokn with your personal token. -->
     <com.liquidm.sdk.VideoAdView
         android:layout_width="200dp"
@@ -134,84 +153,98 @@ Remember to set your siteToken and videoPath.
         android:layout_gravity="center"
         liquidm:videoPath=""
         liquidm:siteToken="" />
+    ```
 
-See [example layout](https://github.com/madvertise/android-sdk-sample/blob/master/res/layout/activity_video_ad_from_xml.xml) for more details.
+See [example layout](Example/res/layout/activity_video_ad_from_xml.xml) for more details.
 
 See [Video ad fullscreen mode](#video-ad-fullscreen-mode) for fullscreen mode integration instructions.
 
-## Create video ad in code
-    String siteToken = ""; // Enter here your site token.
-    String videoPath = ""; // Enter path to your video here.
+## Request video ad in code
 
-    videoAdView = new VideoAdView(this, siteToken, videoPath);
+```java
+String siteToken = ""; // Enter here your site token.
+String videoPath = ""; // Enter path to your video here.
 
-    int width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, r.getDisplayMetrics());
-    int height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, r.getDisplayMetrics());
+videoAdView = new VideoAdView(this, siteToken, videoPath);
 
-    FrameLayout mainLayout = (FrameLayout) findViewById(R.id.main_layout);
-    FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
-    mainLayout.addView(videoAdView, params);
+int width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, r.getDisplayMetrics());
+int height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, r.getDisplayMetrics());
+
+FrameLayout mainLayout = (FrameLayout) findViewById(R.id.main_layout);
+FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
+mainLayout.addView(videoAdView, params);
+```
 
 See [Video ad fullscreen mode](#video-ad-fullscreen-mode) for fullscreen mode integration instructions.
 
 ## Video ad fullscreen mode
 VideoAdView supports fullscreen mode, but part of its implementation have to be done by user.
 
-Basic fullscreen mode implementation can be found in example in [VideoAdViewFullscreenModeProvider.java](https://github.com/madvertise/android-sdk-sample/blob/master/src/com/liquidm/sdk/example/VideoAdViewFullscreenModeProvider.java).
+Basic fullscreen mode implementation can be found in example in [VideoAdViewFullscreenModeProvider.java](Example/src/com/liquidm/sdk/example/VideoAdViewFullscreenModeProvider.java).
 
 Follow below instructions to implement fullscreen mode the same way as it is implemented in example:
 
-1. Copy [VideoAdViewFullscreenModeProvider.java](https://github.com/madvertise/android-sdk-sample/blob/master/src/com/liquidm/sdk/example/VideoAdViewFullscreenModeProvider.java) and its dependencies from example to your project.
+1. Copy [VideoAdViewFullscreenModeProvider.java](Example/src/com/liquidm/sdk/example/VideoAdViewFullscreenModeProvider.java) and its dependencies from example to your project.
 
 1. Enable VideoAdView fullscreen button:
 
-        videoAdView.setFullscreenButtonVisible(true);
+    ```java
+    videoAdView.setFullscreenButtonVisible(true);
+    ```
 
 1. Create VideoAdViewFullscreenModeProvider:
 
-        videoAdViewFullscreenModeProvider = new VideoAdViewFullscreenModeProvider(activity, videoAdView, 16, 9);
+    ```java
+    videoAdViewFullscreenModeProvider = new VideoAdViewFullscreenModeProvider(activity, videoAdView, 16, 9);
+    ```
 16:9 is the aspect ratio that VideoAdViewFullscreenModeProvider will try to maintain while video player is in normal mode.
 
 1. Invoke VideoAdViewFullscreenModeProvider.update():
 
-        @Override
-        public void onWindowFocusChanged(boolean hasFocus) {
-            super.onWindowFocusChanged(hasFocus);
+    ```java
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
 
-            videoAdViewFullscreenModeProvider.update();
-        }
+        videoAdViewFullscreenModeProvider.update();
+    }
 
-        @Override
-        public void onConfigurationChanged(Configuration newConfig) {
-            super.onConfigurationChanged(newConfig);
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
 
-            videoAdViewFullscreenModeProvider.update();
-        }
+        videoAdViewFullscreenModeProvider.update();
+    }
+    ```
 
 1. Implement VideoAdViewFullscreenModeProvider.Listener and hide/show remaining activity content when video player goes into fullscreen/normal mode:
 
-        public void onFullscreenChanged(boolean fullscreen) {
-            if (fullscreen) {
-                // hide content except VideoAdView
-            } else {
-               // show hidden content
-            }
+    ```java
+    public void onFullscreenChanged(boolean fullscreen) {
+        if (fullscreen) {
+            // hide content except VideoAdView
+        } else {
+           // show hidden content
         }
+    }
+    ```
 
 1. Remember to hide title bar on older devices to avoid it in fullscreen mode.
 Add the following code to Activity.onCreate():
 
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+    ```java
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-            if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
-                requestWindowFeature(Window.FEATURE_NO_TITLE);
-            }
-
-            setContentView(R.layout.activity_video_ad_from_code);
-            // ...
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
         }
 
-See also [VideoAdFromCode.java](https://github.com/madvertise/android-sdk-sample/blob/master/src/com/liquidm/sdk/example/VideoAdFromCodeActivity.java)
-or [VideoAdFromXml.java](https://github.com/madvertise/android-sdk-sample/blob/master/src/com/liquidm/sdk/example/VideoAdFromXmlActivity.java) for more details.
+        setContentView(R.layout.activity_video_ad_from_code);
+        // ...
+    }
+    ```
+
+See also [VideoAdFromCode.java](Example/src/com/liquidm/sdk/example/VideoAdFromCodeActivity.java)
+or [VideoAdFromXml.java](Example/src/com/liquidm/sdk/example/VideoAdFromXmlActivity.java) for more details.
 
