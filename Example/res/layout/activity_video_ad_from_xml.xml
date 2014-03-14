@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:layout_gravity=""
         liquidm:siteToken="TestTokn"
-        liquidm:videoPath="" />
+        liquidm:videoPath="http://madvertise-assets-production.s3.amazonaws.com/assets/video-tests/poh.mp4" />
 
     <ScrollView
         android:id="@+id/content_view"

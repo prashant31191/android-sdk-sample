@@ -15,7 +15,7 @@ public class VideoAdFromCodeActivity extends Activity implements Listener {
 
 	// Enter your site token and video path here
 	private static final String SITE_TOKEN = "TestTokn";
-	private static final String VIDEO_PATH = "";
+	private static final String VIDEO_PATH = "http://madvertise-assets-production.s3.amazonaws.com/assets/video-tests/poh.mp4";
 
 	private VideoAdView videoAdView;
 	private VideoAdViewFullscreenModeProvider videoAdViewFullscreenModeProvider;
