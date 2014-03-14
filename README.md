@@ -34,28 +34,30 @@ In the example application you can see how to properly integrate:
 
 
 
-# Integrate the LiquidM SDK into your application
-## Copy [liquidmsdk.jar](SDK/liquidmsdk.jar) into libs/ directory of your project.
-## Set required permissions in AndroidManifest.xml
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+# Integrate the SDK into your application
+1. Copy [liquidmsdk.jar](SDK/liquidmsdk.jar) into libs/ directory of your project.
+1. Set required permissions in AndroidManifest.xml
 
-## Set optional permissions in AndroidManifest.xml
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+        <uses-permission android:name="android.permission.INTERNET"/>
+        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
-## Define AdActivity in AndroidManifest.xml
+1. Set optional permissions in AndroidManifest.xm
 
-    <activity
-      android:name="com.liquidm.sdk.AdActivity"
-      android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
-## Add Google Play Services to your project
+1. Define AdActivity in AndroidManifest.xml
 
-1. [Install the Google Play Services SDK](http://developer.android.com/google/play-services/setup.html#Install)
+        <activity
+          android:name="com.liquidm.sdk.AdActivity"
+          android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
 
-1. [Integrate your project with Google Play Services SDK](http://developer.android.com/google/play-services/setup.html#Setup)
+1. Add Google Play Services to your project
+
+  1. [Install the Google Play Services SDK](http://developer.android.com/google/play-services/setup.html#Install)
+
+  1. [Integrate your project with Google Play Services SDK](http://developer.android.com/google/play-services/setup.html#Setup)
 
 # Integrate desired ad types into your application
 This section contains some common uses and describes how to integrate different kinds of ads into your applicaiton. For banners and video ads you can choose to integrate them in layout xml files or in application code. Please make sure, that you replace the "TestTokn" with your personal token. The "TestTokn" contains example ads and allows you to test your implementation.
@@ -213,5 +215,3 @@ Add the following code to Activity.onCreate():
 See also [VideoAdFromCode.java](https://github.com/madvertise/android-sdk-sample/blob/master/src/com/liquidm/sdk/example/VideoAdFromCodeActivity.java)
 or [VideoAdFromXml.java](https://github.com/madvertise/android-sdk-sample/blob/master/src/com/liquidm/sdk/example/VideoAdFromXmlActivity.java) for more details.
 
-## Example
-See [LiquidM SDK Example](https://github.com/madvertise/android-sdk-sample/) to learn more about LiquidM SDK integration. (Remember to enter your own site token in marked places.)
