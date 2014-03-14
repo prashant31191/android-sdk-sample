@@ -15,8 +15,6 @@ public class FullscreenAdActivity extends Activity implements AdListener {
 
 	InterstitialAd interstitial;
 
-	boolean started;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,26 +22,20 @@ public class FullscreenAdActivity extends Activity implements AdListener {
 
 		interstitial = new InterstitialAd(this, SITE_TOKEN);
 		interstitial.setListener(this);
+
+		interstitial.loadAd();
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-
-		if (!started) {
-			interstitial.loadAd();
-
-			started = true;
-		}
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
 
-		if (isFinishing()) {
-			interstitial.stopLoading();
-		}
+		interstitial.stopLoading();
 	}
 
 	@Override
