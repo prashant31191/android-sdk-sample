@@ -113,27 +113,98 @@ layout.addView(adView, new FrameLayout.LayoutParams(
 
 See [example code](Example/src/com/liquidm/sdk/example/BannerAdFromCodeActivity.java) for more details.
 
-## Request interstitial ad in code
+## Request interstitial ad and show it if ready.
 1. Create and load InterstitialAd
 
     ```java
-    // Replace TestTokn with your personal token.
-    String siteToken = "TestTokn";
-
-    InterstitialAd interstitialAd = new InterstitialAd(this, siteToken);
-
-    interstitialAd.loadAd();
-    ```
-
-1. Show interstitial and reload
-
-    ```java
-    if (interstitial.isReady()) {
-      interstitial.show();
-    } else if (!interstitial.isLoading()) {
-      interstitial.loadAd();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+      // ...
+    
+      // Replace TestTokn with your personal token.
+      String siteToken = "TestTokn";
+    
+      InterstitialAd interstitialAd = new InterstitialAd(this, siteToken);
+    
+      interstitialAd.loadAd();
     }
     ```
+
+1. Show interstitial ad
+
+    ```java
+    private void showInterstitial() {
+      if (interstitial.isReady()) {
+        interstitial.show();
+      }
+    }
+    ```
+    
+## Request interstitial ad and show it as soon as it is loaded
+1. Create InterstitialAd, set its listener, and load it.
+
+    ```java
+    @Override
+	  protected void onCreate(Bundle savedInstanceState) {
+      // ..
+      
+      // Replace TestTokn with your personal token.
+      String siteToken = "TestTokn";
+      InterstitialAd interstitialAd = new InterstitialAd(this, SITE_TOKEN);
+      interstitialAd.setListener(this);
+      
+      interstitialAd.loadAd();
+    }  
+    ```
+    
+1. Show interstitial ad in onAdLoad() event handler. Handle onAdFailedToLoad() event if needed.
+
+    ```java
+    @Override
+    public void onAdLoad(Ad ad) {
+      interstitial.show();
+    }
+    
+    @Override
+    public void onAdFailedToLoad(Ad ad) {
+      Toast.makeText(this, getString(R.string.interstitial_load_failed), Toast.LENGTH_SHORT).show();
+    }
+    
+    @Override
+      public void onAdClick(Ad ad) {
+    }
+    
+    @Override
+      public void onAdPresentScreen(Ad ad) {
+    }
+    
+    @Override
+      public void onAdDismissScreen(Ad ad) {
+    }
+    
+    @Override
+      public void onAdLeaveApplication(Ad ad) {
+    }
+    ```
+
+1. Stop ad loading in activity onPause() method to avoid showing interstitial after leaving the activity.
+
+    ```java
+    @Override
+    protected void onPause() {
+      super.onPause();
+      interstitial.stopLoading();
+    }
+    ```
+
+1. Allow below line to your activity config in AndroidManifest.xml to avoid reloading interstitial ad everty time phone change orientation.
+
+    ```xml
+    android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize"
+    ```
+
+See example code [here](Example/src/com/liquidm/sdk/example/FullscreenAdActivity.java) and [here](Example/AndroidManifest.xml) for more details.
+
 
 ## Request video ad in xml
 1. Add liquidm namespace declaration to xml root element
