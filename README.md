@@ -197,7 +197,7 @@ See [example code](Example/src/com/liquidm/sdk/example/BannerAdFromCodeActivity.
     }
     ```
 
-1. Allow below line to your activity config in AndroidManifest.xml to avoid reloading interstitial ad everty time phone change orientation.
+1. Add below line to your activity config in AndroidManifest.xml to avoid reloading interstitial ad every time device orientation changes.
 
     ```xml
     android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize"
@@ -234,8 +234,10 @@ See [Video ad fullscreen mode](#video-ad-fullscreen-mode) for fullscreen mode in
 ## Request video ad in code
 
 ```java
-String siteToken = ""; // Enter here your site token.
-String videoPath = ""; // Enter path to your video here.
+// Replace TestTokn with your personal token.
+String siteToken = "TestTokn";
+ // Enter path to your video file here.
+String videoPath = "";
 
 videoAdView = new VideoAdView(this, siteToken, videoPath);
 
