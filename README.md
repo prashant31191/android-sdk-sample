@@ -78,7 +78,8 @@ This section contains some common uses and describes how to integrate different 
     ```xml
     <!-- Replace TestTokn with your personal token -->
     <!-- For adSize use one of: mma, medium_rectangle, leaderboard, portrait, landscape, xx_large
-      or provide a custom size, for example: 320x50 -->
+      or provide a custom size, for example: 320x50.
+      Note that the custom size is given in device-independent pixels. -->
 
     <com.liquidm.sdk.AdView
       android:layout_width="wrap_content"
@@ -91,6 +92,8 @@ This section contains some common uses and describes how to integrate different 
 
 See [example layout](Example/res/layout/activity_banner_ad_from_xml.xml) for more details.
 
+See also [How to select the best fitting banner size for most android devices?](#how-to-select-the-best-fitting-banner-size-for-most-android-devices)
+
 ## Request banner ad in code
 
 ```java
@@ -100,6 +103,7 @@ String siteToken = "TestTokn";
 // Select desired ad size (MMA, MEDIUM_RECTANGLE, LEADERBOARD, PORTRAIT, LANDSCAPE, XX_LARGE)
 AdSize adSize = AdSize.MMA;
 // or request custom sized ad using:
+// (note that the custom size is given in device-independent pixels)
 // AdSize adSize = new AdSize(320, 50);
 
 AdView adView = new AdView(this, siteToken, adSize);
@@ -112,6 +116,8 @@ layout.addView(adView, new FrameLayout.LayoutParams(
 ```
 
 See [example code](Example/src/com/liquidm/sdk/example/BannerAdFromCodeActivity.java) for more details.
+
+See also [How to select the best fitting banner size for most android devices?](#how-to-select-the-best-fitting-banner-size-for-most-android-devices)
 
 ## Request interstitial ad and show it if ready.
 1. Create and load InterstitialAd
@@ -337,3 +343,27 @@ Add the following code to Activity.onCreate():
 See also [VideoAdFromCode.java](Example/src/com/liquidm/sdk/example/VideoAdFromCodeActivity.java)
 or [VideoAdFromXml.java](Example/src/com/liquidm/sdk/example/VideoAdFromXmlActivity.java) for more details.
 
+# FAQ
+## How to select the best fitting banner size for most Android devices?
+LiquidM banners sizes are measured in device-independent pixels. It means that for example 300x50 ad will look similarly on different devices, but will occupy different area measured in pixels.
+On Android there are four categories of screen densities: ldpi, mdpi, hdpi, xhdpi and each one has its own scaling factor like on the image below:
+
+![Android Screen Densities](http://developer.android.com/images/screens_support/screens-densities.png)
+
+So a 300x50 (300dp x 50dp) ad will occupy:
+- 225px x 37.5px on ldpi screen
+- 300px x 50px on mdpi screen
+- 450px x 75px on hdpi screen
+- 600px x 100px on xhdpi screen
+
+Having this in mind and knowing screen resolutions and densities of the devices that are the most important for you, you can determine the minimum screen size for every density category.
+
+Having minimum screen sizes for every density category you can choose an ad size that will fit them all.
+
+For example, if your minimal screen sizes for each density category are:
+- 240px x 400px on ldpi
+- 320px x 480px on mdpi
+- 480px x 800px on hdpi
+- 1200px x 1920px on xhdpi
+
+then you should choose a banner with size no greater that 320x480.
