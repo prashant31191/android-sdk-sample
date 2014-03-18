@@ -360,10 +360,27 @@ Having this in mind and knowing screen resolutions and densities of the devices 
 
 Having minimum screen sizes for every density category you can choose an ad size that will fit them all.
 
-For example, if your minimal screen sizes for each density category are:
-- 240px x 400px on ldpi
-- 320px x 480px on mdpi
-- 480px x 800px on hdpi
-- 1200px x 1920px on xhdpi
+### Example
+1. Let's focus on hdpi and xhdpi devices for simplicity and take the following ones into account:
+  - HTC Desire Z: 480px x 800px hdpi
+  - Samsung Galaxy S3 Mini: 480px x 800px hdpi
+  - Samsung Galaxy S4 Mini: 540px x 960px hdpi
+  - LG Nexus 4: 768px x 1280px xhdpi
+  - Asus Nexus 7: 1200px x 1920px xhdpi
+  - Samsung Galaxy Note: 800px x 1280px xhdpi
 
-then you should choose a banner with size no greater that 320x480.
+1. The smallest resolution in each group is:
+  - 480px x 800px for hdpi
+  - 768px x 1280px for xhdpi
+
+1. The smallest resolution expressed in device-independent pixels and rounded down in each group is:
+  - 320dp x 533dp for hdpi
+  - 384dp x 640dp for xhdpi
+
+1. And finally, the smallest resolution expressed in device-independent pixels is: 320dp x 533dp.
+
+1. Summing up, 320x533 is the maximal ad size that will fit on all screens of above devices.
+
+Having this in mind, you can choose to create 300x300 custom sized ad.
+
+You will need 300px x 300px image for standard version and 600px x 600px image for hd version.
