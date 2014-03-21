@@ -17,6 +17,7 @@ This repository contains an example app (LiquidMSDKExample) and provides all the
 After you cloned this repository or unzipped the archive you'll find the following structure:
 
 - [SDK](SDK): Actual SDK with [DFP Network Mediation](https://developers.google.com/mobile-ads-sdk/docs/dfp/mediation) adapter.
+- [API](Docs/API): Documentation of the public SDK interface.
 - [Example](Example): Example application.
 - [GooglePlayServices](GooglePlayServices): Google Play Services library needed by example application.
 - [CHANGELOG.md](CHANGELOG.md): Documentation of SDK changes.
@@ -126,12 +127,12 @@ See also [How to select the best fitting banner size for most android devices?](
     @Override
     protected void onCreate(Bundle savedInstanceState) {
       // ...
-    
+
       // Replace TestTokn with your personal token.
       String siteToken = "TestTokn";
-    
+
       InterstitialAd interstitialAd = new InterstitialAd(this, siteToken);
-    
+
       interstitialAd.loadAd();
     }
     ```
@@ -145,7 +146,7 @@ See also [How to select the best fitting banner size for most android devices?](
       }
     }
     ```
-    
+
 ## Request interstitial ad and show it as soon as it is loaded
 1. Create InterstitialAd, set its listener, and load it.
 
@@ -153,16 +154,16 @@ See also [How to select the best fitting banner size for most android devices?](
     @Override
 	  protected void onCreate(Bundle savedInstanceState) {
       // ..
-      
+
       // Replace TestTokn with your personal token.
       String siteToken = "TestTokn";
       InterstitialAd interstitialAd = new InterstitialAd(this, SITE_TOKEN);
       interstitialAd.setListener(this);
-      
+
       interstitialAd.loadAd();
-    }  
+    }
     ```
-    
+
 1. Show interstitial ad in onAdLoad() event handler. Handle onAdFailedToLoad() event if needed.
 
     ```java
@@ -170,24 +171,24 @@ See also [How to select the best fitting banner size for most android devices?](
     public void onAdLoad(Ad ad) {
       interstitial.show();
     }
-    
+
     @Override
     public void onAdFailedToLoad(Ad ad) {
       Toast.makeText(this, getString(R.string.interstitial_load_failed), Toast.LENGTH_SHORT).show();
     }
-    
+
     @Override
       public void onAdClick(Ad ad) {
     }
-    
+
     @Override
       public void onAdPresentScreen(Ad ad) {
     }
-    
+
     @Override
       public void onAdDismissScreen(Ad ad) {
     }
-    
+
     @Override
       public void onAdLeaveApplication(Ad ad) {
     }

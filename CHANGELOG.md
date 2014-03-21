@@ -1,6 +1,12 @@
 LiquidM SDK Changelog
 ===
 
+5.2.2 (2014-03-21)
+---
+- Added javadocs.
+- Image interstitials will fit on the screen from now on maintaining theirs aspect ratio.
+- Ads that doesn't fit on the screen won't show up and error will be logged.
+
 5.2.1 (2014-03-12)
 ---
 
