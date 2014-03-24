@@ -34,7 +34,7 @@ In the example application you can see how to properly integrate:
 - video ad (both in code and xml)
 
 # Integrate the SDK into your application
-1. Copy [liquidmsdk.jar](SDK/liquidmsdk.jar) into libs/ directory of your project.
+1. Copy [liquidmsdk.jar](https://github.com/liquidm/android-sdk-sample/raw/master/SDK/liquidmsdk.jar) into libs/ directory of your project.
 1. Set required permissions in AndroidManifest.xml
 
     ```xml
