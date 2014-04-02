@@ -1,6 +1,12 @@
 LiquidM SDK Changelog
 ===
 
+5.2.2 (2014-04-02)
+---
+- Fixed banner rendering bug occuring during crossfade reload animation.
+  Crossfade reload animation now fades to black.
+  Fading to transparency was causing strange artifacts on some devices: black rectangle or doubled ad in the left bottom corner of the screen.
+
 5.2.2 (2014-03-21)
 ---
 - Added javadocs.
