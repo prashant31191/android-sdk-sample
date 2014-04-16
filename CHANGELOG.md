@@ -1,7 +1,11 @@
 LiquidM SDK Changelog
 ===
+5.2.4 (2014-04-16)
+---
+- VideoAdView now resumes playing from last position.
+- Fixed VideoAdView resizing problem which occured on some devices.
 
-5.2.2 (2014-04-02)
+5.2.3 (2014-04-02)
 ---
 - Fixed banner rendering bug occuring during crossfade reload animation.
   Crossfade reload animation now fades to black.
