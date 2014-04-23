@@ -36,27 +36,29 @@ In the example application you can see how to properly integrate:
 # Integrate the SDK into your application
 1. Copy [liquidmsdk.jar](https://github.com/liquidm/android-sdk-sample/raw/master/SDK/liquidmsdk.jar) into libs/ directory of your project.
 1. Set required permissions in AndroidManifest.xml
-
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
     ```
 
 1. Set optional permissions in AndroidManifest.xml
-  - Enable ```WRITE_EXTERNAL_STORAGE``` to allow MRAID ads store pictures on the device.
-      ```xml
-      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-      ```
 
-  - Enable ```ACCESS_COARSE_LOCATION``` or ```ACCESS_FINE_LOCATION``` to allow SDK gather device's location passively.
-      ```xml
-      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-      ```
-      ```xml
-      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-      ```
+    Enable ```WRITE_EXTERNAL_STORAGE``` to allow MRAID ads store pictures on the device.
+
+    ```xml
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    ```
+
+    Enable ```ACCESS_COARSE_LOCATION``` or ```ACCESS_FINE_LOCATION``` to allow SDK gather device's location passively.
+    
+    ```xml
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    ```
+    
+    ```xml
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    ```
 
 1. Define AdActivity in AndroidManifest.xml
-
     ```xml
     <activity
       android:name="com.liquidm.sdk.AdActivity"
