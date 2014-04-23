@@ -1,5 +1,12 @@
 LiquidM SDK Changelog
 ===
+5.2.5 (2014-04-23)
+---
+- ACCESS_WIFI_STATE permission is no longer required.
+- Updated GooglePlayServices to 4.3.23.
+- Fixed problem with keyboard that wasn't showing up on a some devices after selecting an input field in an ad.
+- Fixed problem preventing to return from ad inline video.
+
 5.2.4 (2014-04-16)
 ---
 - VideoAdView now resumes playing from last position.

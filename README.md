@@ -39,16 +39,21 @@ In the example application you can see how to properly integrate:
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     ```
 
-1. Set optional permissions in AndroidManifest.xm
+1. Set optional permissions in AndroidManifest.xml
+  - Enable ```WRITE_EXTERNAL_STORAGE``` to allow MRAID ads store pictures on the device.
+      ```xml
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+      ```
 
-    ```xml
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    ```
+  - Enable ```ACCESS_COARSE_LOCATION``` or ```ACCESS_FINE_LOCATION``` to allow SDK gather device's location passively.
+      ```xml
+      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+      ```
+      ```xml
+      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+      ```
 
 1. Define AdActivity in AndroidManifest.xml
 
