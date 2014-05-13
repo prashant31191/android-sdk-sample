@@ -1,5 +1,11 @@
 LiquidM SDK Changelog
 ===
+5.2.6 (2014-05-13)
+---
+- Fixed ad notifications when MRAID ad enters two-part expand.
+- Fixed MRAID state handling when ad enters two-part expand.
+- Fixed bug in AdActivity that sometimes led to crash.
+
 5.2.5 (2014-04-23)
 ---
 - ACCESS_WIFI_STATE permission is no longer required.
