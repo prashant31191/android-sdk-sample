@@ -1,5 +1,9 @@
 LiquidM SDK Changelog
 ===
+5.3.0 (2014-06-13)
+---
+- Added native ads.
+
 5.2.6 (2014-05-13)
 ---
 - Fixed ad notifications when MRAID ad enters two-part expand.

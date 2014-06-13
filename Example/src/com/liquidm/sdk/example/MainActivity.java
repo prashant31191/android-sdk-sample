@@ -71,4 +71,19 @@ public class MainActivity extends Activity {
 		startActivity(i);
 	}
 
+	public void onShowNativeAdXmlClick(View view) {
+		Intent i = new Intent(this, NativeAdFromXmlActivity.class);
+		startActivity(i);
+	}
+
+	public void onShowNativeAdCodeClick(View view) {
+		Intent i = new Intent(this, NativeAdFromCodeActivity.class);
+		startActivity(i);
+	}
+
+	public void onShowNativeVideoInterstitialAdClick(View view) {
+		Intent i = new Intent(this, NativeVideoInterstitialAdActivity.class);
+		startActivity(i);
+	}
+
 }

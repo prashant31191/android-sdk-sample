@@ -37,4 +37,22 @@
         android:onClick="onShowVideoAdCodeClick"
         android:text="@string/examples_show_video_code" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onShowNativeAdXmlClick"
+        android:text="@string/examples_show_native_ad_xml" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onShowNativeAdCodeClick"
+        android:text="@string/examples_show_native_ad_code" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onShowNativeVideoInterstitialAdClick"
+        android:text="@string/examples_show_native_video_interstitial_ad" />
+
 </LinearLayout>

@@ -45,6 +45,15 @@
             android:name="VideoAdFromCodeActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
         <activity
+            android:name="NativeAdFromXmlActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
+        <activity
+            android:name="NativeAdFromCodeActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
+        <activity
+            android:name="NativeVideoInterstitialAdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
+        <activity
             android:name="com.liquidm.sdk.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|uiMode|screenLayout|screenSize|smallestScreenSize" />
     </application>
