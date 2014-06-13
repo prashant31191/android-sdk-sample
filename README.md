@@ -351,7 +351,7 @@ Add the following code to Activity.onCreate():
 See also [VideoAdFromCode.java](Example/src/com/liquidm/sdk/example/VideoAdFromCodeActivity.java)
 or [VideoAdFromXml.java](Example/src/com/liquidm/sdk/example/VideoAdFromXmlActivity.java) for more details.
 
-# Native ads
+# Native ads [BETA]
 Native ads allows you to customize ad rendering so it will fit the look and feel of your app.
 
 Before you can request a native ad you have to choose a schema. The native ad schema determines what data is sent for the native ad, e.g. image , click URLs, etc. A simple example can look like the following:
