@@ -351,6 +351,198 @@ Add the following code to Activity.onCreate():
 See also [VideoAdFromCode.java](Example/src/com/liquidm/sdk/example/VideoAdFromCodeActivity.java)
 or [VideoAdFromXml.java](Example/src/com/liquidm/sdk/example/VideoAdFromXmlActivity.java) for more details.
 
+# Native ads
+Native ads allows you to customize ad rendering so it will fit the look and feel of your app.
+
+Before you can request a native ad you have to choose a schema. The native ad schema determines what data is sent for the native ad, e.g. image , click URLs, etc. A simple example can look like the following:
+
+```json
+{
+    "icon": "http://example.com/icon.png",
+    "title": "Hello, world",
+    "subtitle": "LiquidM"
+}
+```
+
+You can access native ad data through ```NativeAd``` object and obtain its schema by using ```nativeAd.getSchema()```.
+
+There are two ways to integrate native ads:
+- you can prepare ad template and use ```NativeAdView``` to render it or
+- download ```NativeAd``` manually using ```NativeAdProvider``` and render it by yourself.
+
+## Render native ad using ```NativeAdView```
+
+1. Create xml ad template and mark asset views with tags. For example: asset view for "image" asset should have tag = "image", like this:
+
+    ```xml
+    <ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:tag="image" />
+    ```
+For real example, take a look [here](Example/res/layout/template_feed_ad.xml)
+
+1. Create NativeAdView in xml in the following way. Remember to replace ```siteToken```, ```schemaName``` and ```@layout/template``` with your own values.
+
+    ```xml
+    <com.liquidm.sdk.NativeAdView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        liquidm:autoreload="true"
+        liquidm:schemaName="feed_ad"
+        liquidm:siteToken="TestTokn"
+        liquidm:template="@layout/template" />
+    ```
+See [NativeAdFromXmlActivity.java](Example/src/com/liquidm/sdk/example/NativeAdFromXmlActivity.java) for more details.
+
+1. ...or create NativeAdView in code in the following way. Remember to replace ```SITE_TOKEN```, ```SCHEMA_NAME```, ```TEMPLATE``` with your own values.
+
+    ```java
+    NativeAdView nativeAdView = new NativeAdView(this, SITE_TOKEN, SCHEMA_NAME, TEMPLATE);
+    nativeAdView.setAutoreload(true);
+    content.addView(nativeAdView);
+    ```
+See [NativeAdFromCodeActivity.java](Example/src/com/liquidm/sdk/example/NativeAdFromCodeActivity.java) for more details.
+
+## Download NativeAd manually
+
+1. Create ```NativeAdProvider```
+
+    ```java
+    NativeAdProvider nativeAdProvider = new NativeAdProvider(this, SITE_TOKEN, SCHEMA_NAME);
+    ```
+
+1. Attach ```NativeAdLoadListener``` to listen for new ads
+
+    ```java
+    nativeAdProvider.setListener(new NativeAdLoadListener() {
+      @Override
+      public void onAdLoad(NativeAd nativeAd) {
+        // Render nativeAd manually
+      }
+      @Override
+      public void onAdFailedToLoad() {
+          // Handle loading failure
+      }
+    });
+    ```
+
+1. Load native ad
+
+    ```java
+    nativeAdProvider.loadAd();
+    ```
+or turn on autoreloading
+    ```java
+    nativeAdProvider.setAutoreload(true);
+    ```
+
+1. Use ```NativeAd``` methods to fetch asset data, for example:
+
+    ```java
+    String title = nativeAd.getString("title");
+    int rating = nativeAd.getInt("rating");
+    Bitmap image = nativeAd.getPreloadedImage("image");
+    ```
+
+## Other
+### Customize ```NativeAdView``` template rendering
+```NativeAdView``` is using ```NativeAdViewFiller``` for propagating template with native ad data. You can get it in the following way:
+
+```java
+NativeAdViewFiller nativeAdViewFiller = nativeAdView.getViewFiller();
+```
+
+```NativeAdViewFiller``` can fill ```TextView```, ```ImageView``` and ```Button``` views by default, but it can also be configured to fill custom views like this:
+
+```java
+nativeAdViewFiller.setAssetViewFiller(RatingBar.class, new NativeAdViewFiller.AssetViewFiller() {
+    @Override
+    public void fillViewWithNativeAdAssetData(View assetView, NativeAd nativeAd, String assetName) {
+        RatingBar ratingBar = (RatingBar) assetView;
+        ratingBar.setProgress(nativeAd.getInt(assetName));
+    }
+});
+```
+
+```NativeAdViewFiller``` searches for assets views by tags. It matches tag name with asset name by default. This too can be configured by writing custom ```AssetViewFnder```. Default implementation looks like this:
+
+```java
+nativeAdViewFiller.setAssetViewFinder(new NativeAdViewFiller.AssetViewFinder() {
+	@Override
+	public View findViewForAsset(String assetName, View nativeAdView) {
+		return nativeAdView.findViewWithTag(assetName);
+	}
+});
+```
+
+```NativeAdViewFiller``` attaches click handler to all views by default. If you want to disable click handling on specified asset view then invoke:
+
+```java
+nativeAdViewFiller.setIgnoreAssetViewClicks(assetName, true);
+```
+
+### Native video interstitial ad
+```NativeVideoInterstitialAd``` allows you to download and show native video interstitial ad. Please follow below steps to use it:
+
+1. Create ```NativeVideoInterstitialAd```, set its listener, and load it.
+
+    ```java
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+      // ..
+
+      // Replace TestTokn with your personal token.
+      String siteToken = "TestTokn";
+      interstitial = new NativeVideoInterstitialAd(this, "TestTokn");
+      interstitial.setListener(this);
+
+      interstitial.loadAd();
+    }
+    ```
+
+1. Show interstitial ad in onAdLoad() event handler. Handle onAdFailedToLoad() event if needed.
+
+    ```java
+    @Override
+    public void onAdLoad(NativeVideoInterstitialAd ad) {
+      interstitial.show();
+    }
+
+    @Override
+    public void onAdFailedToLoad(NativeVideoInterstitialAd ad) {
+      Toast.makeText(this, getString(R.string.interstitial_load_failed), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+      public void onAdClick(NativeVideoInterstitialAd ad) {
+    }
+
+    @Override
+      public void onAdPresentScreen(NativeVideoInterstitialAd ad) {
+    }
+
+    @Override
+      public void onAdDismissScreen(NativeVideoInterstitialAd ad) {
+    }
+
+    @Override
+      public void onAdLeaveApplication(NativeVideoInterstitialAd ad) {
+    }
+    ```
+
+1. Stop ad loading in activity onPause() method to avoid showing native video interstitial after leaving the activity.
+
+    ```java
+    @Override
+    protected void onPause() {
+      super.onPause();
+      interstitial.stopLoading();
+    }
+    ```
+
+See [NativeVideoInterstitialAdActivity.java](Example/src/com/liquidm/sdk/example/NativeVideoInterstitialAdActivity.java) for more details.
+
 # FAQ
 ## How to select the best fitting banner size for most Android devices?
 LiquidM banners sizes are measured in device-independent pixels. It means that for example 300x50 ad will look similarly on different devices, but will occupy different area measured in pixels.
